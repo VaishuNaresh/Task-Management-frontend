@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
 import InboxOne from './InboxOne';
 import InboxTwo from './InboxTwo';
-import InboxThree from './InboxThree';
+// import InboxThree from './InboxThree';
 import { Routes ,BrowserRouter , Route} from 'react-router-dom';
 import Completed from './Completed';
 

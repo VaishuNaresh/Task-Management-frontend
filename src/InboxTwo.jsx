@@ -31,13 +31,12 @@ function InboxOne() {
     const [editValue, setEditValue] = useState("")   // Temporary updated text
     const [editIndex, setEditIndex] = useState(null)  //Which index we are editing
 
-    const [completed, setCompleted] = useState([])
-    const [text, setText] = useState([])
 
 
-    // Modal state---- sidebar addtask thing
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [deleteId, setDeleteId] = useState(null);
+
+    // // Modal state---- sidebar addtask thing
+    // const [showDeleteModal, setShowDeleteModal] = useState(false);
+    // const [deleteId, setDeleteId] = useState(null);
 
     const indexPage = [
         {
@@ -96,7 +95,7 @@ function InboxOne() {
             completed: true
         });
         // 2. Get completed item from state
-        const completedItem = todos.find(t => t._id === id)
+        // const completedItem = todos.find(t => t._id === id)
 
         // 3. Remove from UI
         setTodos(prev => prev.filter(t => t._id !== id))
@@ -232,7 +231,7 @@ function InboxOne() {
                 <div className="App" >
                     {/* instead of todos we use inputData  */}
                     {todos.length === 0 &&
-                        <img className='imgTag' src={photo} style={{ display: showPrompt ? 'none' : 'block' }} />}
+                        <img className='imgTag' alt='No tasks' src={photo} style={{ display: showPrompt ? 'none' : 'block' }} />}
                     {todos.length === 0 && <h3 className='txted' style={{ display: showPrompt ? 'none' : 'block' }}>Welcome to your Today view
                         See everything due today across all your projects.</h3>}
                     <button className="btn"
