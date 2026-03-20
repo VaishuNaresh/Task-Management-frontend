@@ -170,7 +170,7 @@ function InboxOne() {
 
                 <h2>  By Axios  and redux</h2> 
                 {inboxTodos.map(item => (
-                    console.log(item, ' itembefore insidediv3'),
+                    // console.log(item, ' itembefore insidediv3'),
                     <div className='insideDiv3'>
                         <ul className='insideDiv2' key={item._id}>
                             <li >
