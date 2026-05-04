@@ -15,7 +15,7 @@ function InboxOne() {
   const [openModal, setOpenModal] = useState(false);
 
 
-  const [searchQuery, setSearchQuery] = useState("");
+
 
 
   //FOR SEARCH QUERY OPEN MODAL
@@ -289,7 +289,7 @@ function InboxOne() {
           {showPrompt &&
             <div className='insideDiv'>
               <input type='text' className='ip' id='ipValue' value={inputValue} placeholder='Replace lightBulb tomorrow at 3pm' onChange={(e) => setInputValue(e.target.value)} />
-              <div className='ibtn'><button onClick={handleSubmit}>Add Task</button>
+              <div className='ibtn'><button onClick={handleSubmit}>Add Taskhygf</button>
                 <button onClick={() => setShowPrompt(false)}>Cancel</button></div></div>
           }
 
@@ -304,46 +304,7 @@ function InboxOne() {
         </div>
 
       </main >
-      {openModal && (
-        <div className="modalOverlay">
-          <div className="modalBox">
-            <h3>Add New Item</h3>
-            <div className='insideDiv'>
-              <input type='text' className='ip' id='ipValue' value={inputValue} placeholder='Replace lightBulb tomorrow at 3pm' onChange={(e) => setInputValue(e.target.value)} />
-              <div className='ibtn'><button onClick={handleSubmit}>Add Task</button>
-                <button onClick={() => setOpenModal(false)}>Cancel</button></div></div>
-          
-
-          </div>
-        </div>
-      )}
-
-      {searchModal && (
-        <div className="modalOverlay" onClick={() => setSearchModal(false)}>
-          <div className="modalBox" onClick={(e) => e.stopPropagation()}>
-            <div className='searchQuery'>
-              <div className="searchRow">
-              <svg xmlns="http://www.w3.org/2000/svg" className='icon'  width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fillRule="evenodd" d="M16.29 15.584a7 7 0 1 0-.707.707l3.563 3.563a.5.5 0 0 0 .708-.707zM11 17a6 6 0 1 0 0-12 6 6 0 0 0 0 12" clipRule="evenodd"></path></svg>
-              <input
-              type="text" className='form-control'
-              placeholder="Search"
-              onChange={(e) => setSearchQuery(e.target.value)}
-              /></div>
-              {listToShow.length === 0 && <p>No items found</p>}
-              {listToShow && listToShow.map((item, index) => 
-              (
-                <div className='specific'>{item.text}</div>
-              ))}
-             
-
-              {/* <div className='ibtn'><button onClick={handleSearch}>search your task</button>
-                <button onClick={() => setSearchModal(false)}>Cancel</button></div> */}
-            </div>
-
-
-          </div>
-        </div>
-      )}
+    
 
     </div >
   </>);
