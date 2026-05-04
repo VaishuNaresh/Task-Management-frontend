@@ -1,7 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 
-function Layout({inputValue,setInputValue,handleSubmit,listToShow,openModal,setOpenModal,searchModal, setSearchModal}) {
+function Layout({ inputValue, setInputValue, handleSubmit, listToShow,
+    // , openModal, setOpenModal,
+    showPrompt,setShowPrompt,
+    searchModal, setSearchModal }) {
     const [searchQuery, setSearchQuery] = useState("");
 
     const indexPage = [
@@ -22,15 +25,15 @@ function Layout({inputValue,setInputValue,handleSubmit,listToShow,openModal,setO
                 {indexPage.map((item, index) => {
                     return (
                         <ul className='listedType' key={index}>
-                            <li onClick={() => setOpenModal(true)} >
+                            <li onClick={() => setShowPrompt(true)} >
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fillRule="evenodd" d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11m-.711-16.5a.75.75 0 1 1 1.5 0v4.789H17.5a.75.75 0 0 1 0 1.5h-4.711V17.5a.75.75 0 0 1-1.5 0V12.79H6.5a.75.75 0 1 1 0-1.5h4.789z" clipRule="evenodd"></path></svg>
                                 {item.buttonAdd}</li>
-                            <li onClick={() => setSearchModal(true)} >
+                            <li onClick={() => setShowPrompt(true)} >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fillRule="evenodd" d="M16.29 15.584a7 7 0 1 0-.707.707l3.563 3.563a.5.5 0 0 0 .708-.707zM11 17a6 6 0 1 0 0-12 6 6 0 0 0 0 12" clipRule="evenodd"></path></svg>
                                 {item.search}</li>
                             <li><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor" fillRule="evenodd"><path fillRule="nonzero" d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H6zm1 3h10a.5.5 0 1 1 0 1H7a.5.5 0 0 1 0-1z"></path><text fontFamily="var(--fontFamily-regular)" fontSize="9" transform="translate(4 2)" fontWeight="500"><tspan x="8" y="15" textAnchor="middle">18</tspan></text></g></svg>
-                                <Link to="/inbox"> {item.inbox}</Link>
+                                <Link to="/inboxOne"> {item.inbox}</Link>
                             </li>
 
                             <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fillRule="evenodd" d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1zm10 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-3-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m9-5a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-3-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0M7 8a.5.5 0 0 0 0 1h10a.5.5 0 0 0 0-1z" clipRule="evenodd"></path></svg> {item.upcoming}</li>
@@ -53,15 +56,14 @@ function Layout({inputValue,setInputValue,handleSubmit,listToShow,openModal,setO
                 <Outlet />
             </main>
         </div>
-          {
-        openModal && (
+          {showPrompt&& (
             <div className="modalOverlay">
                 <div className="modalBox">
                     <h3>Add New Item</h3>
                     <div className='insideDiv'>
                         <input type='text' className='ip' id='ipValue' value={inputValue} placeholder='Replace lightBulb tomorrow at 3pm' onChange={(e) => setInputValue(e.target.value)} />
-                        <div className='ibtn'><button onClick={handleSubmit}>Add Task</button>
-                            <button onClick={() => setOpenModal(false)}>Cancel</button></div></div>
+                        <div className='ibtn'><button type="button"  onClick={handleSubmit}>Add Task</button>
+                            <button onClick={() => setShowPrompt(false)}>Cancel</button></div></div>
 
 
                 </div>

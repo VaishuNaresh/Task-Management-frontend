@@ -7,13 +7,13 @@ import Completed from "./Completed";
 import { addTodo,fetchTodo } from "./api/todoapi";
 
 function App() {
-  const [showPrompt, setShowPrompt] = useState(false);
+
   const [inputValue, setInputValue] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [todos, setTodos] = useState([]);
 
   //for open modal for ADD TASK
-  const [openModal, setOpenModal] = useState(false);
+  const [showPrompt, setShowPrompt] = useState(false);
 
   //FOR SEARCH QUERY OPEN MODAL
   const [searchModal, setSearchModal] = useState(false)
@@ -21,15 +21,20 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!inputValue.trim()) return;
+    const todoText = inputValue; // capture current typed value first
+// WHY I STORED const todoText = inputValue
+
+// Because async operations sometimes rerender while state changes.
+
+// Capturing current value ensures exact typed value sent.
     try {
       await addTodo({
-        text: inputValue
+        text:todoText
       });
-      fetchTodos();
-      setInputValue("");
+      setInputValue(""); // clear only after api success
        setShowPrompt(false);
-      setOpenModal(false)
       setSearchModal(false)
+      await fetchTodos();
     } catch (error) {
       console.log("Add todo error:", error);
     }
@@ -49,8 +54,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout showPrompt={showPrompt}
-          openModal={openModal}
-          setOpenModal={setOpenModal}
           searchModal={searchModal}
           setShowPrompt={setShowPrompt}
           inputValue={inputValue}
