@@ -26,18 +26,6 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
   // const [showDeleteModal, setShowDeleteModal] = useState(false);
   // const [deleteId, setDeleteId] = useState(null);
 
-  // const indexPage = [
-  //   {
-  //     buttonAdd: "Add Task",
-  //     search: "Search",
-  //     inbox: "Inbox",
-  //     today: "Today",
-  //     upcoming: "Upcoming",
-  //     filtersAndLabels: "Filters And Labels",
-  //     completed: "Completed"
-  //   }
-  // ];
-  
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this task?");
@@ -49,13 +37,13 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
   const handleAdd = () => {
     setShowPrompt(!showPrompt)
   }
+  
  //which is purely from frontend
   // const handleDelete = (index) => {
   //   console.log(index)
   //   const filtered = inputData.filter((item, i) => i !== index)
   //   console.log(filtered);
   //   setInputData(filtered)
-
   // }
 
   // const handleCompleted = (index) => {

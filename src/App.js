@@ -38,6 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout showPrompt={showPrompt}
           openModal={openModal}
+          setOpenModal={setOpenModal}
           searchModal={searchModal}
           setShowPrompt={setShowPrompt}
           inputValue={inputValue}
