@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
-import {  useNavigate } from 'react-router-dom';
 import Layout from "./Layout";
 import InboxOne from "./InboxOne";
 import InboxTwo from "./InboxTwo";
