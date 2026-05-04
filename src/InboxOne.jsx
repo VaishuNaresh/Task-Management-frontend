@@ -163,15 +163,18 @@ function InboxOne() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!inputValue.trim()) return;
-    await addTodo(), {
-      text: inputValue
-    };
+    try {
+      await addTodo({
+        text: inputValue
+      });
     fetchTodos();
     setInputValue("");
     // setShowPrompt(false);
     setOpenModal(false)
     setSearchModal(false)
-  
+    } catch (error) {
+      console.log("Add todo error:", error);
+    }
   };
 
   return (<>
