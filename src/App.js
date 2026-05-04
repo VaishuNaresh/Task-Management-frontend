@@ -1,14 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from 'react';
 import Layout from "./Layout";
 import InboxOne from "./InboxOne";
 import InboxTwo from "./InboxTwo";
 import Completed from "./Completed";
+import { addTodo,fetchTodo } from "./api/todoapi";
 
 function App() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
+  //for open modal for ADD TASK
+  const [openModal, setOpenModal] = useState(false);
 
+  //FOR SEARCH QUERY OPEN MODAL
+  const [searchModal, setSearchModal] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -17,7 +23,7 @@ function App() {
       await addTodo({
         text: inputValue
       });
-      fetchTodos();
+      fetchTodo();
       setInputValue("");
        setShowPrompt(false);
       setOpenModal(false)
@@ -30,6 +36,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout showPrompt={showPrompt}
+          openModal={openModal}
+          searchModal={searchModal}
           setShowPrompt={setShowPrompt}
           inputValue={inputValue}
           setInputValue={setInputValue}

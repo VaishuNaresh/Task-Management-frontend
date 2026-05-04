@@ -4,23 +4,10 @@ import axios from 'axios';
 import './App.css';
 import { addTodo, fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
-function InboxOne() {
-  const [showPrompt, setShowPrompt] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+function InboxOne({searchQuery}) {
+
 
   const navigate = useNavigate()
-
-
-  //for open modal for ADD TASK
-  const [openModal, setOpenModal] = useState(false);
-
-
-
-
-
-  //FOR SEARCH QUERY OPEN MODAL
-  const [searchModal,setSearchModal]=useState(false)
-
 
   // this is for frontly add the data without backend so we use this inputdata
   // const [inputData, setInputData] = useState([])
@@ -158,24 +145,7 @@ function InboxOne() {
     setShowPrompt(false)
   }
 
- 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!inputValue.trim()) return;
-    try {
-      await addTodo({
-        text: inputValue
-      });
-    fetchTodos();
-    setInputValue("");
-    // setShowPrompt(false);
-    setOpenModal(false)
-    setSearchModal(false)
-    } catch (error) {
-      console.log("Add todo error:", error);
-    }
-  };
 
   return (<>
     {/* <InboxOne /> */}

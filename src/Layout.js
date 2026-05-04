@@ -1,10 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 
-function Layout() {
-    const [openModal, setOpenModal] = useState(false);
+function Layout({inputValue,setInputValue,handleSubmit,listToShow,openModal,setOpenModal,searchModal, setSearchModal}) {
     const [searchQuery, setSearchQuery] = useState("");
-    const [searchModal, setSearchModal] = useState(false);
 
     const indexPage = [
         {
