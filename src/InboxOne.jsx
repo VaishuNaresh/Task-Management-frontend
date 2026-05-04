@@ -4,7 +4,7 @@ import axios from 'axios';
 import './App.css';
 import { addTodo, fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
-function InboxOne({indexPage}) {
+function InboxOne() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -180,7 +180,7 @@ function InboxOne({indexPage}) {
   return (<>
     {/* <InboxOne /> */}
     <div className="layout">
-      <aside className='sidebar'>
+      {/* <aside className='sidebar'>
         {indexPage.map((item, index) => {
           return (
             <ul className='listedType' key={index}>
@@ -209,7 +209,7 @@ function InboxOne({indexPage}) {
 
           )
         })}
-      </aside>
+      </aside> */}
       <main className='content'>
         <h1>Inbox</h1>
       
