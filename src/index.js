@@ -16,7 +16,7 @@ root.render(
     {/* <App /> */}
     <BrowserRouter>
     <Routes>
-        <Route path="/Inbox" element={<InboxOne />} />
+        <Route path="/" element={<InboxOne />} />
         <Route path="/completed" element={<Completed />} />
         <Route path="/Inbox2" element={<InboxTwo />} />
     {/* <InboxOne /> */}

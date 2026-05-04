@@ -1,10 +1,11 @@
-import React, { useState,useEffect} from 'react'
+import  { useState,useEffect} from 'react'
 import axios from 'axios';
 
 function Completed({ todos }) {
     const [completed, setCompleted] = useState([]);
     const fetchCompleted = async () => {
-        const res = await axios.get("http://localhost:8091/api/todos/completed")   
+       
+        const res = await axios.get(" https://task-management-pro-dre1.onrender.com/api/todos/completed")   
         setCompleted(res.data) 
     }
     useEffect(() => {

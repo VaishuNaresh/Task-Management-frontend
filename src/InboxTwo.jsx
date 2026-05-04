@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
-import { deleteTodo, fetchTodos,addTodo} from './api/todoapi';
+import { deleteTodo, fetchTodo,addTodo} from './api/todoapi';
 function InboxOne() {
     const [showPrompt, setShowPrompt] = useState(false);
     const [inputValue, setInputValue] = useState("");
@@ -68,7 +68,7 @@ function InboxOne() {
     };
 
     const handleUpdate = async (id) => {
-        await axios.patch(`http://localhost:8091/api/todos/${id}`, {
+        await axios.patch(` https://task-management-pro-dre1.onrender.com/api/todos/${id}`, {
             text: editValue
         });
 
@@ -91,7 +91,7 @@ function InboxOne() {
 
     const handleCompleted = async (id) => {
 
-        await axios.patch(`http://localhost:8091/api/todos/${id}`, {
+        await axios.patch(` https://task-management-pro-dre1.onrender.com/api/todos/${id}`, {
             completed: true
         });
         // 2. Get completed item from state
@@ -114,7 +114,7 @@ function InboxOne() {
     }, [])
 
     const loadTodos = async() => {
-        const res = await fetchTodos()
+        const res = await fetchTodo()
         setTodos(res.data)
   }
 

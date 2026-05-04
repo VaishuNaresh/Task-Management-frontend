@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import {  useNavigate,Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
+import { fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
 function InboxOne() {
   const [showPrompt, setShowPrompt] = useState(false);
@@ -55,7 +56,7 @@ function InboxOne() {
     const confirmDelete = window.confirm("Are you sure you want to delete this task?");
 
     if (!confirmDelete) return; // user cancelled
-    await axios.delete(`http://localhost:8091/api/todos/${id}`);
+    await axios.delete(` https://task-management-pro-dre1.onrender.com/api/todos/${id}`);
     fetchTodos();
   };
   const handleAdd = () => {
@@ -108,7 +109,7 @@ function InboxOne() {
   };
 
   const handleUpdate = async (id) => {
-    await axios.patch(`http://localhost:8091/api/todos/${id}`, {
+    await axios.patch(` https://task-management-pro-dre1.onrender.com/api/todos/${id}`, {
       text: editValue
     });
 
@@ -117,10 +118,8 @@ function InboxOne() {
     fetchTodos();
   };
 
-  const filteredTodos = todos.filter((item) =>
+  const filteredTodos = todos.filter((item) => 
     item.text.toLowerCase().includes(searchQuery.toLowerCase())
-
-    // console.log(item, "itemsfiltered")
   )
 
 
@@ -131,7 +130,7 @@ function InboxOne() {
 
   const handleCompleted = async (id) => {
    
-    await axios.patch(`http://localhost:8091/api/todos/${id}`, {
+    await axios.patch(` https://task-management-pro-dre1.onrender.com/api/todos/${id}`, {
       completed: true
     });
     // 2. Get completed item from state
@@ -154,7 +153,7 @@ function InboxOne() {
   }, [])
   
   const fetchTodos = async () => {
-    const res = await axios.get("http://localhost:8091/api/todos")
+    const res = await fetchTodo()
     setTodos(res.data)
     setShowPrompt(false)
   }
@@ -164,7 +163,7 @@ function InboxOne() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!inputValue.trim()) return;
-    await axios.post("http://localhost:8091/api/todos", {
+    await axios.post(" https://task-management-pro-dre1.onrender.com/api/todos", {
       text: inputValue
     });
     fetchTodos();
