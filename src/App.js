@@ -9,6 +9,7 @@ import { addTodo,fetchTodo } from "./api/todoapi";
 function App() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   //for open modal for ADD TASK
   const [openModal, setOpenModal] = useState(false);
@@ -41,6 +42,8 @@ function App() {
           setShowPrompt={setShowPrompt}
           inputValue={inputValue}
           setInputValue={setInputValue}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
           handleSubmit={handleSubmit} />}>
           <Route index element={<InboxOne showPrompt={showPrompt}
             setShowPrompt={setShowPrompt}
