@@ -1,12 +1,13 @@
 import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Layout({ inputValue, setInputValue, handleSubmit, listToShow,
     // , openModal, setOpenModal,
     showPrompt,setShowPrompt,
     searchModal, setSearchModal }) {
     const [searchQuery, setSearchQuery] = useState("");
-
+    const navigate = useNavigate()
     const indexPage = [
         {
             buttonAdd: "Add Task",
