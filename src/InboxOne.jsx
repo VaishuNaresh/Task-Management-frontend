@@ -44,7 +44,7 @@ function InboxOne({ todos,
     fetchTodos();
   };
   const handleAdd = () => {
-    setShowPrompt(!showPrompt)
+    setShowPrompt(true)
   }
 
  //which is purely from frontend

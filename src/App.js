@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
+import {  useNavigate } from 'react-router-dom';
 import Layout from "./Layout";
 import InboxOne from "./InboxOne";
 import InboxTwo from "./InboxTwo";
@@ -12,6 +13,8 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [todos, setTodos] = useState([]);
 
+  const navigate = useNavigate()
+
   //for open modal for ADD TASK
   const [showPrompt, setShowPrompt] = useState(false);
 
@@ -23,9 +26,7 @@ function App() {
     if (!inputValue.trim()) return;
     const todoText = inputValue; // capture current typed value first
 // WHY I STORED const todoText = inputValue
-
 // Because async operations sometimes rerender while state changes.
-
 // Capturing current value ensures exact typed value sent.
     try {
       await addTodo({
@@ -35,6 +36,7 @@ function App() {
        setShowPrompt(false);
       setSearchModal(false)
       await fetchTodos();
+      navigate("/");   
     } catch (error) {
       console.log("Add todo error:", error);
     }

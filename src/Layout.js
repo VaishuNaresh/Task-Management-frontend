@@ -18,7 +18,11 @@ function Layout({ inputValue, setInputValue, handleSubmit, listToShow,
             completed: "Completed"
         }
     ];
-
+    const handleCancel = () => {
+        setShowPrompt(false);
+        setInputValue("");
+        navigate("/");
+    };
     return (<>
         <div className="layout">
             <aside className='sidebar'>
@@ -63,8 +67,8 @@ function Layout({ inputValue, setInputValue, handleSubmit, listToShow,
                     <div className='insideDiv'>
                         <input type='text' className='ip' id='ipValue' value={inputValue} placeholder='Replace lightBulb tomorrow at 3pm' onChange={(e) => setInputValue(e.target.value)} />
                         <div className='ibtn'><button type="button"  onClick={handleSubmit}>Add Task</button>
-                            <button onClick={() => setShowPrompt(false)}>Cancel</button></div></div>
-
+                            <button onClick={handleCancel}>Cancel</button>
+                        </div></div>
 
                 </div>
             </div>
