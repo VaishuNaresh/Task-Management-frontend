@@ -2,8 +2,8 @@ import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 
 function Layout() {
-    const [openModal, setOpenModal] = useState(false);
-    const [searchModal, setSearchModal] = useState(false);
+    const [, setOpenModal] = useState(false);
+    const [, setSearchModal] = useState(false);
 
     const indexPage = [
         {
