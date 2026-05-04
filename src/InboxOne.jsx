@@ -106,7 +106,7 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
   };
 
   const filteredTodos = todos.filter((item) => 
-    item.text.toLowerCase().includes(searchQuery.toLowerCase())
+    item.text.toLowerCase().includes(searchQuery && searchQuery.toLowerCase())
   )
 
 
@@ -262,7 +262,7 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
           {showPrompt &&
             <div className='insideDiv'>
               <input type='text' className='ip' id='ipValue' value={inputValue} placeholder='Replace lightBulb tomorrow at 3pm' onChange={(e) => setInputValue(e.target.value)} />
-              <div className='ibtn'><button onClick={handleSubmit}>Add Taskhygf</button>
+              <div className='ibtn'><button onClick={handleSubmit}>Add Task</button>
                 <button onClick={() => setShowPrompt(false)}>Cancel</button></div></div>
           }
 
