@@ -110,7 +110,7 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
   )
 
 
-  const listToShow = searchQuery.trim() === "" ? todos : filteredTodos;
+  const listToShow = searchQuery && searchQuery.trim() === "" ? todos : filteredTodos;
 
   
   const inboxTodos = listToShow.filter(item => !item.completed);
