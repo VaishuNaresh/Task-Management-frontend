@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {  useNavigate,Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import { fetchTodo } from './api/todoapi';
+import { addTodo, fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
 function InboxOne() {
   const [showPrompt, setShowPrompt] = useState(false);
@@ -163,9 +163,9 @@ function InboxOne() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!inputValue.trim()) return;
-    await axios.post(" https://task-management-pro-dre1.onrender.com/api/todos", {
+    await addTodo(), {
       text: inputValue
-    });
+    };
     fetchTodos();
     setInputValue("");
     // setShowPrompt(false);
