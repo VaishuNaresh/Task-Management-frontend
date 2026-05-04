@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Layout from "./Layout";
 import InboxOne from "./InboxOne";
 import InboxTwo from "./InboxTwo";

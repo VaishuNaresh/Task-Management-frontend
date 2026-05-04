@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import { addTodo, fetchTodo } from './api/todoapi';
+import {  fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
 function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue,handleSubmit}) {
 
@@ -135,16 +135,18 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
 
     fetchTodos();
   };
-  useEffect(() => {
-  fetchTodos()
-  }, [])
-  
+
   const fetchTodos = async () => {
     const res = await fetchTodo()
     setTodos(res.data)
     setShowPrompt(false)
   }
 
+  useEffect(() => {
+  fetchTodos()
+  }, [fetchTodos])
+  
+ 
 
 
   return (<>
