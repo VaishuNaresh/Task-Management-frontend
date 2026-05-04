@@ -4,7 +4,7 @@ import axios from 'axios';
 import './App.css';
 import { addTodo, fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
-function InboxOne(indexPage) {
+function InboxOne({ indexPage }) {
   const [showPrompt, setShowPrompt] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
