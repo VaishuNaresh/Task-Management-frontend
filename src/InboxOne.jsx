@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useCallback } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
@@ -136,11 +136,12 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
     fetchTodos();
   };
 
-  const fetchTodos = async () => {
-    const res = await fetchTodo()
-    setTodos(res.data)
-    setShowPrompt(false)
-  }
+
+  const fetchTodos = useCallback(async () => {
+    const res = await fetchTodo();
+    setTodos(res.data);
+    setShowPrompt(false);
+  }, []);
 
   useEffect(() => {
   fetchTodos()
