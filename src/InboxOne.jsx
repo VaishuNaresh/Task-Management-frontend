@@ -141,7 +141,7 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
     const res = await fetchTodo();
     setTodos(res.data);
     setShowPrompt(false);
-  }, []);
+  }, [setShowPrompt]);
 
   useEffect(() => {
   fetchTodos()
