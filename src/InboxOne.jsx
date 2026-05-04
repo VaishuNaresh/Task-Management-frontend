@@ -4,7 +4,7 @@ import axios from 'axios';
 import './App.css';
 import { addTodo, fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
-function InboxOne() {
+function InboxOne(indexPage) {
   const [showPrompt, setShowPrompt] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -39,17 +39,17 @@ function InboxOne() {
   // const [showDeleteModal, setShowDeleteModal] = useState(false);
   // const [deleteId, setDeleteId] = useState(null);
 
-  const indexPage = [
-    {
-      buttonAdd: "Add Task",
-      search: "Search",
-      inbox: "Inbox",
-      today: "Today",
-      upcoming: "Upcoming",
-      filtersAndLabels: "Filters And Labels",
-      completed: "Completed"
-    }
-  ];
+  // const indexPage = [
+  //   {
+  //     buttonAdd: "Add Task",
+  //     search: "Search",
+  //     inbox: "Inbox",
+  //     today: "Today",
+  //     upcoming: "Upcoming",
+  //     filtersAndLabels: "Filters And Labels",
+  //     completed: "Completed"
+  //   }
+  // ];
   
 
   const handleDelete = async (id) => {
