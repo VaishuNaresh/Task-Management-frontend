@@ -2,9 +2,18 @@ import { useState, useEffect,useCallback } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import {  fetchTodo } from './api/todoapi';
+import {  deleteTodo, fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
-function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue,handleSubmit}) {
+function InboxOne({ todos,
+  setTodos,
+  fetchTodos,
+  searchQuery,
+  showPrompt,
+  setShowPrompt,
+  inputValue,
+  setInputValue,
+  handleSubmit
+}) {
 
 
   const navigate = useNavigate()
@@ -13,7 +22,7 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
   // const [inputData, setInputData] = useState([])
 
   //this is for backend axios /mongodb 
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
 
   const [editValue, setEditValue] = useState("")   // Temporary updated text
   const [editIndex, setEditIndex] = useState(null)  //Which index we are editing
@@ -31,13 +40,13 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
     const confirmDelete = window.confirm("Are you sure you want to delete this task?");
 
     if (!confirmDelete) return; // user cancelled
-    await axios.delete(` https://task-management-pro-dre1.onrender.com/api/todos/${id}`);
+    await deleteTodo(id);
     fetchTodos();
   };
   const handleAdd = () => {
     setShowPrompt(!showPrompt)
   }
-  
+
  //which is purely from frontend
   // const handleDelete = (index) => {
   //   console.log(index)
@@ -93,12 +102,11 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
     fetchTodos();
   };
 
-  const filteredTodos = todos.filter((item) => 
-    item.text.toLowerCase().includes(searchQuery && searchQuery.toLowerCase())
-  )
+  const filteredTodos = todos.filter((item) =>
+    item.text?.toLowerCase().includes((searchQuery || "").toLowerCase())
+  );
 
-
-  const listToShow = searchQuery && searchQuery.trim() === "" ? todos : filteredTodos;
+  const listToShow = (searchQuery || "").trim() === "" ? todos : filteredTodos;
 
   
   const inboxTodos = listToShow.filter(item => !item.completed);
@@ -123,19 +131,6 @@ function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue
 
     fetchTodos();
   };
-
-
-  const fetchTodos = useCallback(async () => {
-    const res = await fetchTodo();
-    setTodos(res.data);
-    setShowPrompt(false);
-  }, [setShowPrompt]);
-
-  useEffect(() => {
-  fetchTodos()
-  }, [fetchTodos])
-  
- 
 
 
   return (<>

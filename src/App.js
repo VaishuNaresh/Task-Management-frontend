@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from "react";
 import Layout from "./Layout";
 import InboxOne from "./InboxOne";
 import InboxTwo from "./InboxTwo";
@@ -10,6 +10,7 @@ function App() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [todos, setTodos] = useState([]);
 
   //for open modal for ADD TASK
   const [openModal, setOpenModal] = useState(false);
@@ -24,7 +25,7 @@ function App() {
       await addTodo({
         text: inputValue
       });
-      fetchTodo();
+      fetchTodos();
       setInputValue("");
        setShowPrompt(false);
       setOpenModal(false)
@@ -33,6 +34,17 @@ function App() {
       console.log("Add todo error:", error);
     }
   };
+
+  const fetchTodos = useCallback(async () => {
+    const res = await fetchTodo();
+    setTodos(res.data);
+    setShowPrompt(false);
+  }, [setShowPrompt]);
+
+  useEffect(() => {
+    fetchTodos()
+  }, [fetchTodos])
+
   return (
     <BrowserRouter>
       <Routes>
@@ -46,7 +58,11 @@ function App() {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           handleSubmit={handleSubmit} />}>
-          <Route index element={<InboxOne showPrompt={showPrompt}
+          <Route index element={<InboxOne todos={todos}
+            setTodos={setTodos}
+            fetchTodos={fetchTodos}
+            searchQuery={searchQuery}
+            showPrompt={showPrompt}
             setShowPrompt={setShowPrompt}
             inputValue={inputValue}
             setInputValue={setInputValue}
