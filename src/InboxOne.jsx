@@ -4,7 +4,7 @@ import axios from 'axios';
 import './App.css';
 import { addTodo, fetchTodo } from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
-function InboxOne({searchQuery}) {
+function InboxOne({searchQuery,showPrompt,setShowPrompt,inputValue,setInputValue,handleSubmit}) {
 
 
   const navigate = useNavigate()
