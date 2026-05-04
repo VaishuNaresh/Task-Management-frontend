@@ -1,8 +1,8 @@
-import { useState, useEffect,useCallback } from 'react';
+import { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import {  deleteTodo, fetchTodo } from './api/todoapi';
+import {  deleteTodo} from './api/todoapi';
 import photo from "../src/assets/yellow-file-folder-with-documents-vector-1627041 (1).webp"
 function InboxOne({ todos,
   setTodos,
@@ -93,10 +93,7 @@ function InboxOne({ todos,
   };
 
   const handleUpdate = async (id) => {
-    await axios.patch(` https://task-management-pro-dre1.onrender.com/api/todos/${id}`, {
-      text: editValue
-    });
-
+    await updateTodo(id, { text: editValue });
     setEditIndex(null);
     setEditValue("");
     fetchTodos();
